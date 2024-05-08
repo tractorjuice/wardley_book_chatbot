@@ -2,7 +2,7 @@ import os, re, uuid
 import streamlit as st
 from langchain.chains import ConversationalRetrievalChain
 from langchain_openai import ChatOpenAI
-from langchain.vectorstores import Pinecone
+from langchain_community.vectorstores import Pinecone
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_openai import OpenAIEmbeddings
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
