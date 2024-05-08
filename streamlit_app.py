@@ -16,8 +16,11 @@ MODEL = "gpt-3.5-turbo-1106" # 16K, Sept 2021. New Updated GPT 3.5 Turbo. The la
 #MODEL = "gpt-4-turbo-preview" # 128K, Apr 2023
 #MODEL = "gpt-4-1106-preview" # 128K, Apr 2023
 
-DEBUG = True # True to overwrite files that already exist]]# Set API keys
+DEBUG = True # True to overwrite files that already exist
+
+# Set API keys
 PINECONE_INDEX_NAME = st.secrets["PINECONE_INDEX_NAME"]
+
 os.environ["LANGCHAIN_TRACING_V2"] = st.secrets["LANGCHAIN_TRACING_V2"]
 os.environ["LANGCHAIN_ENDPOINT"] = st.secrets["LANGCHAIN_ENDPOINT"]
 os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
