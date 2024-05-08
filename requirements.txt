@@ -1,5 +1,4 @@
-langchain-core
+langchain
 langchain-openai
 langchain-pinecone
-langchain
 streamlit
