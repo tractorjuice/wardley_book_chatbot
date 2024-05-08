@@ -61,10 +61,7 @@ if user_openai_api_key:
     os.environ["OPENAI_API_KEY"] = user_openai_api_key
 
     if "vector_store" not in st.session_state:
-        if os.path.exists(DATA_STORE_DIR):
-            st.session_state.vector_store = Pinecone.from_existing_index(index_name, embeddings)
-        else:
-            st.write(f"Missing files. Upload index.faiss and index.pkl files to {DATA_STORE_DIR} directory first")
+        st.session_state.vector_store = Pinecone.from_existing_index(index_name, embeddings)
 
         custom_system_template="""
             You are SimonGPT with the style of a strategy researcher with well over twenty years research in strategy and cloud computing.
