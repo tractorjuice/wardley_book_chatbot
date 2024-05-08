@@ -163,14 +163,13 @@ if user_openai_api_key:
                 st.divider()
 
                 with st.expander("Source"):
-
-                    source_documents = response['source_documents']
-                    for index, document in enumerate(source_documents):
-                        if 'Chapter' in document.metadata:
-                            chapter_details = document.metadata['Chapter']
-                            section_details = document.metadata['Section']
+                        source_documents = response['source_documents']
+                        for index, document in enumerate(source_documents):
+                            # Safely retrieve metadata using `get` to avoid KeyError
+                            chapter_details = document.metadata.get('Chapter', 'Not provided')
+                            section_details = document.metadata.get('Section', 'Not provided')
                             st.warning(f"Source {index + 1}:\nChapter: {chapter_details}\nSection: {section_details}")
 
-            st.session_state.messages.append({"role": "assistant", "content": response['answer']})
+        st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
     st.warning("Please enter your OpenAI API key", icon="⚠️")
