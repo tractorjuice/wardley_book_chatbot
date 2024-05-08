@@ -9,6 +9,7 @@ from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTempla
 
 # Required for tracing in LangSmith
 import langsmith
+client = langsmith.Client()
 
 # gpt-3.5-turbo, gpt-4, and gpt-4-turbo-preview point to the latest model version
 #MODEL = "gpt-3.5-turbo" # 4K, Sept 2021. Legacy. Currently points to gpt-3.5-turbo-0613.
