@@ -1,15 +1,11 @@
 import os, re, uuid
 import streamlit as st
 from langchain.chains import ConversationalRetrievalChain
-from langchain_openai import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain_community.vectorstores import Pinecone
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_openai import OpenAIEmbeddings
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
-
-# Required for tracing in LangSmith
-import langsmith
-client = langsmith.Client()
 
 # gpt-3.5-turbo, gpt-4, and gpt-4-turbo-preview point to the latest model version
 #MODEL = "gpt-3.5-turbo" # 4K, Sept 2021. Legacy. Currently points to gpt-3.5-turbo-0613.
@@ -22,7 +18,6 @@ MODEL = "gpt-3.5-turbo-1106" # 16K, Sept 2021. New Updated GPT 3.5 Turbo. The la
 
 DEBUG = True # True to overwrite files that already exist]]# Set API keys
 PINECONE_INDEX_NAME = st.secrets["PINECONE_INDEX_NAME"]
-
 
 # Remove HTML from sources
 def remove_html_tags(text):
@@ -59,6 +54,12 @@ st.sidebar.markdown("Current Version: 1.3.0")
 st.sidebar.markdown(st.session_state.session_id)
 st.sidebar.markdown("Wardley Mapping is provided courtesy of Simon Wardley and licensed Creative Commons Attribution Share-Alike.")
 st.sidebar.divider()
+
+tags = [
+    "streamlit",
+    "WardleyBookChatbot",
+    st.session_state.session_id,
+]
 
 # Check if the user has provided an API key, otherwise default to the secret
 user_openai_api_key = st.sidebar.text_input("Enter your OpenAI API Key:", placeholder="sk-...", type="password")
