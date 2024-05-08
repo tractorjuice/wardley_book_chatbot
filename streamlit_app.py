@@ -1,7 +1,7 @@
 import os, re, uuid
 import streamlit as st
 from langchain.chains import ConversationalRetrievalChain
-langchain_community.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain_community.vectorstores import Pinecone
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_openai import OpenAIEmbeddings
