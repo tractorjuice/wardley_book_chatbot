@@ -139,7 +139,6 @@ if user_openai_api_key:
             with st.chat_message("assistant"):
                 response = st.session_state.chain(query)
                 st.markdown(response['answer'])
-                st.divider()
 
                 with st.expander("Source"):
                         source_documents = response['source_documents']
@@ -148,6 +147,8 @@ if user_openai_api_key:
                             chapter_details = document.metadata.get('Chapter', 'Not provided')
                             section_details = document.metadata.get('Section', 'Not provided')
                             st.markdown(f"Source {index + 1}:\n{chapter_details}\nSection: {section_details}")
+
+                st.divider()
 
         st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
