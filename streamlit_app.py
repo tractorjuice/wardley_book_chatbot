@@ -38,7 +38,7 @@ st.title("Chat with Simon Wardley's Book")
 st.sidebar.markdown("# Query Simon's book using AI")
 st.sidebar.markdown("Developed by Mark Craddock](https://twitter.com/mcraddock)", unsafe_allow_html=True)
 st.sidebar.markdown("Current Version: 1.3.0")
-st.sidebar.markdown(st.session_state.session_id)
+#st.sidebar.markdown(st.session_state.session_id)
 st.sidebar.markdown("Wardley Mapping is provided courtesy of Simon Wardley and licensed Creative Commons Attribution Share-Alike.")
 st.sidebar.divider()
 
@@ -140,17 +140,17 @@ if user_openai_api_key:
                 response = st.session_state.chain(query)
                 st.markdown(response['answer'])
 
-                with st.expander("Source"):
-                        source_documents = response['source_documents']
-                        for index, document in enumerate(source_documents):
-                            # Safely retrieve metadata using `get` to avoid KeyError
-                            chapter_details = document.metadata.get('Chapter', 'Not provided')
-                            section_details = document.metadata.get('Section', 'Not provided')
-                            st.markdown(f":blue[Source {index + 1}]")
-                            st.markdown(f"{chapter_details}")
-                            st.markdown(f"Section: {section_details}")
+            with st.expander("Source"):
+                    source_documents = response['source_documents']
+                    for index, document in enumerate(source_documents):
+                        # Safely retrieve metadata using `get` to avoid KeyError
+                        chapter_details = document.metadata.get('Chapter', 'Not provided')
+                        section_details = document.metadata.get('Section', 'Not provided')
+                        st.markdown(f":blue[Source {index + 1}]")
+                        st.markdown(f"{chapter_details}")
+                        st.markdown(f"Section: {section_details}")
 
-                st.divider()
+            st.divider()
 
         st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
