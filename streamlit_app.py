@@ -162,13 +162,14 @@ if user_openai_api_key:
                 st.markdown(response['answer'])
                 st.divider()
 
-                source_documents = response['source_documents']
-                for index, document in enumerate(source_documents):
-                    if 'Chapter' in document.metadata:
-                        with st.expander("Source"):
+                with st.expander("Source"):
+
+                    source_documents = response['source_documents']
+                    for index, document in enumerate(source_documents):
+                        if 'Chapter' in document.metadata:
                             chapter_details = document.metadata['Chapter']
                             section_details = document.metadata['Section']
-                            st.warning(f"Source {index + 1}: {chapter_details} {section_details}")
+                            st.warning(f"Source {index + 1}:\nChapter: {chapter_details}\nSection: {section_details}")
 
             st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
