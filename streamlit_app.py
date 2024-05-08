@@ -164,8 +164,8 @@ if user_openai_api_key:
 
                 source_documents = response['source_documents']
                 for index, document in enumerate(source_documents):
-                    st.expander("Source"):
-                        if 'Chapter' in document.metadata:
+                    if 'Chapter' in document.metadata:
+                        with st.expander("Source"):
                             chapter_details = document.metadata['Chapter']
                             section_details = document.metadata['Section']
                             st.warning(f"Source {index + 1}: {chapter_details} {section_details}")
