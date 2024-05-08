@@ -18,6 +18,10 @@ MODEL = "gpt-3.5-turbo-1106" # 16K, Sept 2021. New Updated GPT 3.5 Turbo. The la
 
 DEBUG = True # True to overwrite files that already exist]]# Set API keys
 PINECONE_INDEX_NAME = st.secrets["PINECONE_INDEX_NAME"]
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
+os.environ["LANGCHAIN_ENDPOINT"] = st.secrets["LANGCHAIN_API_KEY"]
 
 # Remove HTML from sources
 def remove_html_tags(text):
