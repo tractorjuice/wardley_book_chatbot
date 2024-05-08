@@ -23,12 +23,9 @@ Engage in a dynamic conversation with the content of Simon Wardley's book on War
 ## Dependencies
 To run this code, you need the following Python packages:
 
-- os
-- re
 - openai
 - streamlit
 - langchain
-- FAISS
 
 ### API Keys
 The application uses the OpenAI API. You will need to obtain an API key from OpenAI and set it in the Streamlit secrets manager.
