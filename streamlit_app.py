@@ -17,6 +17,7 @@ MODEL = "gpt-3.5-turbo-1106" # 16K, Sept 2021. New Updated GPT 3.5 Turbo. The la
 #MODEL = "gpt-4-1106-preview" # 128K, Apr 2023
 
 DEBUG = True # True to overwrite files that already exist]]# Set API keys
+PINECONE_INDEX_NAME = st.secrets["PINECONE_INDEX_NAME"]
 
 # Remove HTML from sources
 def remove_html_tags(text):
