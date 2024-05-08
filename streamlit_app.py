@@ -62,7 +62,7 @@ if user_openai_api_key:
     os.environ["OPENAI_API_KEY"] = user_openai_api_key
 
     if "vector_store" not in st.session_state:
-        st.session_state.vector_store = Pinecone.from_existing_index(PINECONE_INDEX_NAME, embeddings)
+        st.session_state.vector_store = Pinecone.from_existing_index(PINECONE_INDEX_NAME, embedding=OpenAIEmbeddings())
 
         custom_system_template="""
             You are SimonGPT with the style of a strategy researcher with well over twenty years research in strategy and cloud computing.
