@@ -63,6 +63,28 @@ st.sidebar.markdown(st.session_state.session_id)
 st.sidebar.markdown("Wardley Mapping is provided courtesy of Simon Wardley and licensed Creative Commons Attribution Share-Alike.")
 st.sidebar.divider()
 
+# Set styling for buttons. Full column width, primary colour border.
+primaryColor = st.get_option("theme.primaryColor")
+custom_css_styling = f"""
+<style>
+    /* Style for buttons */
+    div.stButton > button:first-child, div.stDownloadButton > button:first-child {{
+        border: 5px solid {primaryColor};
+        border-radius: 20px;
+        width: 100%;
+    }}
+    /* Center align button container */
+    div.stButton, div.stDownloadButton {{
+        text-align: center;
+    }}
+    .stButton, .stDownloadButton {{
+        width: 100%;
+        padding: 0;
+    }}
+</style>
+"""
+st.html(custom_css_styling)
+
 tags = [
     "streamlit",
     "WardleyBookChatbot",
@@ -142,11 +164,11 @@ if user_openai_api_key:
 
                 source_documents = response['source_documents']
                 for index, document in enumerate(source_documents):
-                    if 'Chapter' in document.metadata:
-                        chapter_details = document.metadata['Chapter']
-                        section_details = document.metadata['Section']
-                        st.warning(f"Source {index + 1}: Page {document.metadata['page']}\n")
-                        st,markdown(f'{chapter_details} {section_details}')
+                    st.expander("Source"):
+                        if 'Chapter' in document.metadata:
+                            chapter_details = document.metadata['Chapter']
+                            section_details = document.metadata['Section']
+                            st.warning(f"Source {index + 1}: {chapter_details} {section_details}")
 
             st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
