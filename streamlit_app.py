@@ -83,7 +83,6 @@ if user_openai_api_key:
             HumanMessagePromptTemplate.from_template(custom_user_template)
             ]
         prompt = ChatPromptTemplate.from_messages(prompt_messages)
-        openai.api_key = user_openai_api_key
 
     if "memory" not in st.session_state:
         st.session_state.memory = ConversationBufferWindowMemory(memory_key="chat_history", return_messages=True, output_key='answer')
