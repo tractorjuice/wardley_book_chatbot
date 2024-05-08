@@ -147,7 +147,7 @@ if user_openai_api_key:
                             # Safely retrieve metadata using `get` to avoid KeyError
                             chapter_details = document.metadata.get('Chapter', 'Not provided')
                             section_details = document.metadata.get('Section', 'Not provided')
-                            st.markdown(f"Source {index + 1}:\nChapter: {chapter_details}\nSection: {section_details}")
+                            st.markdown(f"Source {index + 1}:\n{chapter_details}\nSection: {section_details}")
 
         st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
