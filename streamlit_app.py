@@ -27,27 +27,6 @@ os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 os.environ["LANGCHAIN_PROJECT"] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
 
-# Remove HTML from sources
-def remove_html_tags(text):
-    clean = re.compile('<.*?>')
-    return re.sub(clean, '', text)
-
-def remove_markdown(text):
-    # Remove headers (e.g., # Header)
-    text = re.sub(r'#.*$', '', text, flags=re.MULTILINE)
-    # Remove bold/italic (e.g., **bold**, *italic*)
-    text = re.sub(r'\*.*\*', '', text)
-    # Remove links (e.g., [text](url))
-    text = re.sub(r'\[.*\]\(.*\)', '', text)
-    # Remove lists (e.g., - item)
-    text = re.sub(r'- .*$', '', text, flags=re.MULTILINE)
-    return text
-
-def clean_text(text):
-    text = remove_html_tags(text)
-    text = remove_markdown(text)
-    return text
-
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
@@ -168,7 +147,7 @@ if user_openai_api_key:
                             # Safely retrieve metadata using `get` to avoid KeyError
                             chapter_details = document.metadata.get('Chapter', 'Not provided')
                             section_details = document.metadata.get('Section', 'Not provided')
-                            st.warning(f"Source {index + 1}:\nChapter: {chapter_details}\nSection: {section_details}")
+                            st.markdown(f"Source {index + 1}:\nChapter: {chapter_details}\nSection: {section_details}")
 
         st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
