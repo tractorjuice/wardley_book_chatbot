@@ -142,11 +142,11 @@ if user_openai_api_key:
 
                 source_documents = response['source_documents']
                 for index, document in enumerate(source_documents):
-                    if 'source' in document.metadata:
-                        source_details = document.metadata['source']
-                        cleaned_content = clean_text(document.page_content)
+                    if 'Chapter' in document.metadata:
+                        chapter_details = document.metadata['Chapter']
+                        section_details = document.metadata['Section']
                         st.warning(f"Source {index + 1}: Page {document.metadata['page']}\n")
-                        st.write(f"{cleaned_content}\n")
+                        st,markdown(f'{chapter_details} {section_details}')
 
             st.session_state.messages.append({"role": "assistant", "content": response['answer']})
 else:
