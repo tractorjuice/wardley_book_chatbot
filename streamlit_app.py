@@ -1,11 +1,11 @@
 import os, re, uuid
 import streamlit as st
-from langchain.chains import ConversationalRetrievalChain
 from langchain_openai import ChatOpenAI
-from langchain_community.vectorstores import Pinecone
-from langchain.memory import ConversationBufferWindowMemory
 from langchain_openai import OpenAIEmbeddings
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferWindowMemory
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
+from langchain_community.vectorstores import Pinecone
 
 # gpt-3.5-turbo, gpt-4, and gpt-4-turbo-preview point to the latest model version
 #MODEL = "gpt-3.5-turbo" # 4K, Sept 2021. Legacy. Currently points to gpt-3.5-turbo-0613.
