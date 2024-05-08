@@ -7,6 +7,9 @@ from langchain.memory import ConversationBufferWindowMemory
 from langchain_openai import OpenAIEmbeddings
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 
+# Required for tracing in LangSmith
+import langsmith
+
 # gpt-3.5-turbo, gpt-4, and gpt-4-turbo-preview point to the latest model version
 #MODEL = "gpt-3.5-turbo" # 4K, Sept 2021. Legacy. Currently points to gpt-3.5-turbo-0613.
 #MODEL = "gpt-3.5-turbo-16k" # 16K, Sept 2021. Legacy. Snapshot of gpt-3.5-turbo from June 13th 2023. Will be deprecated on June 13, 2024
@@ -18,6 +21,7 @@ MODEL = "gpt-3.5-turbo-1106" # 16K, Sept 2021. New Updated GPT 3.5 Turbo. The la
 
 DEBUG = True # True to overwrite files that already exist]]# Set API keys
 PINECONE_INDEX_NAME = st.secrets["PINECONE_INDEX_NAME"]
+
 
 # Remove HTML from sources
 def remove_html_tags(text):
