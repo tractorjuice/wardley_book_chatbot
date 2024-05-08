@@ -146,7 +146,7 @@ if user_openai_api_key:
                             # Safely retrieve metadata using `get` to avoid KeyError
                             chapter_details = document.metadata.get('Chapter', 'Not provided')
                             section_details = document.metadata.get('Section', 'Not provided')
-                            st.markdown(f":blue[Source] {index + 1}")
+                            st.markdown(f":blue[Source {index + 1}]")
                             st.markdown(f"{chapter_details}")
                             st.markdown(f"Section: {section_details}")
 
