@@ -66,7 +66,7 @@ st.html(custom_css_styling)
 
 tags = [
     "streamlit",
-    "WardleyBookChatbot",
+    "Chatbot_WardleyBook",
     st.session_state.session_id,
 ]
 
