@@ -106,7 +106,7 @@ if user_openai_api_key:
         st.session_state.llm = ChatOpenAI(
             model_name=MODEL,
             temperature=0,
-            max_tokens=300,
+            max_tokens=256,
             tags=tags,
         )  # Modify model_name if you have access to GPT-4
 
