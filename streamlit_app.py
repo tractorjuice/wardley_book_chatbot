@@ -64,12 +64,6 @@ custom_css_styling = f"""
 """
 st.html(custom_css_styling)
 
-tags = [
-    "streamlit",
-    "Chatbot_WardleyBook",
-    st.session_state.session_id,
-]
-
 # Check if the user has provided an API key, otherwise default to the secret
 user_openai_api_key = st.sidebar.text_input("Enter your OpenAI API Key:", placeholder="sk-...", type="password")
 
@@ -107,8 +101,8 @@ if user_openai_api_key:
             model_name=MODEL,
             temperature=0,
             max_tokens=256,
-            tags=tags,
-        )  # Modify model_name if you have access to GPT-4
+            tags="["streamlit", "Chatbot_WardleyBook", st.session_state.session_id],
+        )
 
     if "chain" not in st.session_state:
         st.session_state.chain = ConversationalRetrievalChain.from_llm(
