@@ -101,7 +101,7 @@ if user_openai_api_key:
             model_name=MODEL,
             temperature=0,
             max_tokens=256,
-            tags="["streamlit", "Chatbot_WardleyBook", st.session_state.session_id],
+            tags=["streamlit", "Chatbot_WardleyBook", st.session_state.session_id],
         )
 
     if "chain" not in st.session_state:
